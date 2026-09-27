@@ -1,0 +1,7 @@
+Bomberman PythonEste é um jogo inspirado no clássico Bomberman, desenvolvido em Python utilizando a biblioteca Pygame. O objetivo é navegar pelo labirinto, destruir caixas com bombas e desviar das explosões.📋 Pré-requisitosAntes de rodar o jogo, certifique-se de ter o Python instalado em sua máquina. Você pode verificar se ele está instalado abrindo o terminal ou prompt de comando e digitando:python --version
+
+Caso não o tenha, faça o download no site oficial: python.org.⚙️ InstalaçãoO jogo utiliza a biblioteca pygame para gerenciar a janela gráfica, os eventos do teclado e as renderizações. Para instalá-la, abra o terminal na pasta onde o arquivo bomberman.py está salvo e execute o comando:pip install pygame
+
+🚀 Como Executar o JogoCertifique-se de que o arquivo de código fonte do jogo se chama bomberman.py.Abra o terminal (ou prompt de comando) na pasta onde o arquivo foi salvo.Inicie o jogo executando o seguinte comando:python bomberman.py
+
+🕹️ ControlesSetas Direcionais ($\leftarrow$, $\rightarrow$, $\uparrow$, $\downarrow$): Movimentam o personagem pelo labirinto.Barra de Espaço: Planta uma bomba na posição atual do jogador.Objetivo: Destrua as caixas marrons com suas bombas e tome cuidado para não ser atingido pelas chamas das explosões!

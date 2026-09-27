@@ -10,12 +10,12 @@ caixas = []
 for y in range(10):
     for x in range(15):
         r = pygame.Rect(x * T, y * T, T, T)
-        if x in (0, 14) or (0, 9):
+        if x in (0, 14) or y in (0, 9):
             paredes.append(r)
         elif x % 2 == 0 and y % 2 == 0:
             paredes.append(r)
         elif random.random() < 0.5 and x + y > 3: 
-            caixa.append(r)
+            caixas.append(r)
 jogador = pygame.Rect(T, T, T, T)
 setas = {
     pygame.K_LEFT: (-1, 0), pygame.K_RIGHT: (1, 0),
@@ -33,6 +33,9 @@ def explodir(centro, fim):
                 break
             fogo.append([r, fim])
             i = r.collidelist(caixas)
+            if i >= 0:
+                caixas.pop(i)
+                break
 
 rodando = True
 while rodando:
