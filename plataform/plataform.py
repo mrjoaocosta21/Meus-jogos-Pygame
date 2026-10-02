@@ -43,16 +43,41 @@ while rodando:
             if evento.key == pygame.K_SPACE and no_chao:
                 vel_y = -12
                 no_chao = False
+
     teclas = pygame.key.get_pressed()
     jogador.x += 4 * (teclas[pygame.K_RIGHT] - teclas[pygame.K_LEFT])
-    jogador.x = max(0, min(572, jogador.x))
+    jogador.x = max(0, min(MUNDO-28, jogador.x))
+    antes = jogador.bottom
     vel_y = min(12, vel_y + 0.7)
     jogador.y += round(vel_y)
     no_chao = False
     if jogador.bottom >= 350:
         jogador.bottom = 350
         vel_y = 0
-        no_chao = True                
+        no_chao = True
+
+    for p in plataformas:
+        if vel_y > 0 and antes <= p.top:
+            if jogador.collidedict(p):
+                jogador.bottom = p.top
+                vel_y = 0
+                no_chao = True
+
+    for ini in inimigos[:]:
+        corpo, base = ini["corpo"], ini["base"]
+        corpo.x += ini["vel"]
+        if not base.left < corpo.x < base.right-26:
+            ini["vel"] += -1 
+        if jogador.colliderect(corpo):
+            if vel_y > 0 and antes <= corpo.top:
+                inimigos.remove(ini)
+                vel_y = -8
+            else:
+                jogador.topleft = (45, 312)
+    for moeda in moeda[:]:
+        if jogador.colliderect(moeda):
+            moedas.remove(moeda)
+            pontos += 1                                                 
 
     tela.fill("#83D4F5")
     pygame.draw.rect(tela, "#9B684B", (0, 350, 600, 50))
